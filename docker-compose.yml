@@ -1,0 +1,15 @@
+services:
+  maintenance-correction:
+    build: .
+    image: maintenance-correction:1.0.0
+    container_name: maintenance-correction
+    ports:
+      - "8000:8000"
+    volumes:
+      - maintenance-data:/data
+    environment:
+      APP_DB_PATH: /data/maintenance.db
+    restart: unless-stopped
+
+volumes:
+  maintenance-data:
